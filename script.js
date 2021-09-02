@@ -3,6 +3,7 @@ var game = document.getElementById("game");
 var interval;
 var both = 0;
 var counter = 0;
+var currentBlocks = [];
 
 function moveLeft() {
   var left = parseInt(
@@ -69,6 +70,20 @@ setInterval(function () {
     game.appendChild(block);
     game.appendChild(hole);
 
+    currentBlocks.push(counter);
+
     counter++;
+  }
+
+  for (var i = 0; i < currentBlocks.length; i++) {
+    var current = currentBlocks[i];
+    var iblock = document.getElementById("block" + current);
+    var ihole = document.getElementById("hole" + current);
+    var iblockTop = parseFloat(
+      window.getComputedStyle(iblock).getPropertyValue("top")
+    );
+
+    iblock.style.top = iblockTop - 0.5 + "px";
+    ihole.style.top = iblockTop - 0.5 + "px";
   }
 }, 1);
