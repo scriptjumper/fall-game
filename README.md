@@ -1,5 +1,14 @@
 <p align="center">
   <h3 align="center">Fall Game</h3>
+
+  <p align="center">
+    <br />
+    <a href="https://sj-fall-game.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/scriptjumper/fall-game/issues/new">Report Bug</a>
+    ·
+    <a href="https://github.com/scriptjumper/fall-game/issues/new">Request Feature</a>
+  </p>
 </p>
 
 ## Table of Contents
