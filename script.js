@@ -40,7 +40,7 @@ document.addEventListener("keyup", (event) => {
   both = 0;
 });
 
-setInterval(function () {
+var blocks = setInterval(function () {
   var blockLast = document.getElementById("block" + (counter - 1));
   var holeLast = document.getElementById("hole" + (counter - 1));
 
@@ -83,6 +83,12 @@ setInterval(function () {
   );
   var drop = 0;
 
+  if (characterTop <= 0) {
+    alert("Game over. Score: " + (counter - 9));
+    clearInterval(blocks);
+    location.reload();
+  }
+
   for (var i = 0; i < currentBlocks.length; i++) {
     var current = currentBlocks[i];
     var iblock = document.getElementById("block" + current);
@@ -113,7 +119,9 @@ setInterval(function () {
   }
 
   if (drop == 0) {
-    character.style.top = characterTop + 2 + "px";
+    if (characterTop < 480) {
+      character.style.top = characterTop + 2 + "px";
+    }
   } else {
     character.style.top = characterTop - 0.5 + "px";
   }
