@@ -52,21 +52,23 @@ setInterval(function () {
     );
   }
 
-  var block = document.createElement("div");
-  var hole = document.createElement("div");
+  if (blockLastTop < 400 || counter == 0) {
+    var block = document.createElement("div");
+    var hole = document.createElement("div");
 
-  block.setAttribute("class", "block");
-  hole.setAttribute("class", "hole");
-  block.setAttribute("id", "block" + counter);
-  hole.setAttribute("id", "hole" + counter);
-  block.style.top = blockLastTop + 100 + "px";
-  hole.style.top = holeLastTop + 100 + "px";
+    block.setAttribute("class", "block");
+    hole.setAttribute("class", "hole");
+    block.setAttribute("id", "block" + counter);
+    hole.setAttribute("id", "hole" + counter);
+    block.style.top = blockLastTop + 100 + "px";
+    hole.style.top = holeLastTop + 100 + "px";
 
-  var random = Math.floor(Math.random() * 360);
-  hole.style.left = random + "px";
+    var random = Math.floor(Math.random() * 360);
+    hole.style.left = random + "px";
 
-  game.appendChild(block);
-  game.appendChild(hole);
+    game.appendChild(block);
+    game.appendChild(hole);
 
-  counter++;
+    counter++;
+  }
 }, 1);
