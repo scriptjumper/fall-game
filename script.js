@@ -75,6 +75,14 @@ setInterval(function () {
     counter++;
   }
 
+  var characterTop = parseInt(
+    window.getComputedStyle(character).getPropertyValue("top")
+  );
+  var characterLeft = parseInt(
+    window.getComputedStyle(character).getPropertyValue("left")
+  );
+  var drop = 0;
+
   for (var i = 0; i < currentBlocks.length; i++) {
     var current = currentBlocks[i];
     var iblock = document.getElementById("block" + current);
@@ -82,8 +90,31 @@ setInterval(function () {
     var iblockTop = parseFloat(
       window.getComputedStyle(iblock).getPropertyValue("top")
     );
+    var iholdeLeft = parseFloat(
+      window.getComputedStyle(ihole).getPropertyValue("left")
+    );
 
     iblock.style.top = iblockTop - 0.5 + "px";
     ihole.style.top = iblockTop - 0.5 + "px";
+
+    if (iblockTop < -20) {
+      currentBlocks.shift();
+      iblock.remove();
+      ihole.remove();
+    }
+
+    if (iblockTop - 20 < characterTop && iblockTop > characterTop) {
+      drop++;
+
+      if (iholdeLeft <= characterLeft && iholdeLeft + 20 >= characterLeft) {
+        drop = 0;
+      }
+    }
+  }
+
+  if (drop == 0) {
+    character.style.top = characterTop + 2 + "px";
+  } else {
+    character.style.top = characterTop - 0.5 + "px";
   }
 }, 1);
