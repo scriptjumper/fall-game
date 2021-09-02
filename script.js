@@ -2,6 +2,7 @@ var character = document.getElementById("character");
 var game = document.getElementById("game");
 var interval;
 var both = 0;
+var counter = 0;
 
 function moveLeft() {
   var left = parseInt(
@@ -38,16 +39,20 @@ document.addEventListener("keyup", (event) => {
   both = 0;
 });
 
-var block = document.createElement("div");
-var hole = document.createElement("div");
+setInterval(function () {
+  var block = document.createElement("div");
+  var hole = document.createElement("div");
 
-block.setAttribute("class", "block");
-hole.setAttribute("class", "hole");
-block.setAttribute("id", "block");
-hole.setAttribute("id", "hole");
+  block.setAttribute("class", "block");
+  hole.setAttribute("class", "hole");
+  block.setAttribute("id", "block" + counter);
+  hole.setAttribute("id", "hole" + counter);
 
-var random = Math.floor(Math.random() * 360);
-hole.style.left = random + "px";
+  var random = Math.floor(Math.random() * 360);
+  hole.style.left = random + "px";
 
-game.appendChild(block);
-game.appendChild(hole);
+  game.appendChild(block);
+  game.appendChild(hole);
+
+  counter++;
+}, 1);
